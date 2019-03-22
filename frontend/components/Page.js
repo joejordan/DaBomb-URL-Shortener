@@ -1,5 +1,5 @@
-import Header from "./Header";
-import Meta from "./Meta";
+import Header from './Header';
+import Meta from './Meta';
 
 function Page(props) {
   return (

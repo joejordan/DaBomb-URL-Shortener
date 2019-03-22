@@ -7,12 +7,12 @@ function EntryForm() {
   return (
     <>
       <form>
-        <input type='text' name='url' />
-        <input type='submit' value='Shorten URL' />
+        <input type="text" name="url" />
+        <input type="submit" value="Shorten URL" />
       </form>
       <div>Url that was input: {urlToAdd}</div>
     </>
-  )
+  );
 }
 
 export default EntryForm;
