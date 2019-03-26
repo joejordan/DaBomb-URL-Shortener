@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "proxy": "http://localhost:2777/",
   "scripts": {
     "dev": "next dev -p 3777",
     "build": "next build",

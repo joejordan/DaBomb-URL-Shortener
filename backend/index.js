@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const HashURL = require('./lib/hash');
 
 // Load up app global config
 require('dotenv').config();
@@ -13,15 +14,20 @@ const app = express();
 // Tell Apollo to use our express instance
 apollo.applyMiddleware({ app });
 
-console.log()
-
 // configure express app to use bodyParser
 // this will let us get data from a POST
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+console.log(HashURL('https://goooooogle.com/'));
 
 app.get('/', (req, res) => {
   res.send('💣DaBomb💣 URL Shortener backend!');
+});
+
+app.post('/api/v1/shorten', async (req, res) => {
+  console.log(`Your POST:${req.body.post} `);
+  res.send('URL Shortened!');
 });
 
 app.listen(process.env.PORT, () =>
