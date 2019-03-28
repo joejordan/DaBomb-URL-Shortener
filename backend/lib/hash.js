@@ -9,8 +9,8 @@ function HashString(str) {
 function StringToBase58(str) {
   console.log(`StringToBase arg: ${str}`);
   if (typeof str == 'string' && str.length > 0) {
-    var bytes = [];
-    for (var i = 0; i < str.length; i++) {
+    const bytes = [];
+    for (let i = 0; i < str.length; i++) {
       bytes.push(str[i].charCodeAt(0));
     }
     return Base58.encode(bytes);
@@ -19,13 +19,27 @@ function StringToBase58(str) {
   }
 }
 
-// Returns a Base58 string of the SHA256 hash of the passed URL
+function Base58ToString(base58str) {
+  try {
+    const bytes = Base58.decode(base58str);
+    let str = '';
+    for (let i = 0; i < bytes.length; i++) {
+      str += String.fromCharCode(bytes[i]);
+    }
+    return str;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+// Returns an object with the original SHA256 hash and the Base58-encoded hash
 function HashURL(url) {
   if (typeof url == 'string') {
-    return StringToBase58(HashString(url));
+    const urlHash = HashString(url);
+    return { hash: urlHash, shorturl: StringToBase58(urlHash) };
   } else {
     throw new Error('HashURL must be passed a string');
   }
 }
 
-module.exports = HashURL;
+module.exports = HashURL, Base58ToString;

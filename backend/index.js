@@ -25,6 +25,10 @@ app.get('/', (req, res) => {
   res.send('💣DaBomb💣 URL Shortener backend!');
 });
 
+app.get('/api/v1/shorten', async (req, res) => {
+  console.log(`Your POST:${req.body.post} `);
+  res.send('URL Shortened!');
+});
 app.post('/api/v1/shorten', async (req, res) => {
   console.log(`Your POST:${req.body.post} `);
   res.send('URL Shortened!');
