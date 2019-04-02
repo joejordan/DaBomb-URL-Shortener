@@ -1,9 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const HashURL = require('./lib/hash');
-
-// Load up app global config
+// Load up app global config; keep this before db init
 require('dotenv').config();
+
+// create db instance
+const db = require('./db');
 
 // Create new Apollo Server
 const apollo = require('./createServer');
@@ -19,7 +21,7 @@ apollo.applyMiddleware({ app });
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-console.log(HashURL('https://goooooogle.com/'));
+//console.log(HashURL('https://goooooogle.com/'));
 
 app.get('/', (req, res) => {
   res.send('💣DaBomb💣 URL Shortener backend!');

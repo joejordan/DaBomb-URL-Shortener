@@ -8,14 +8,17 @@ const typeDefs = gql`
   }
 
   type ShortUrl {
-    longurl: String!
-    shortId: String!
+    longUrl: String!
+    longurlHash: String!
+    shortUrl: String!
+    userId: String!
+    creationDate: String! # TODO: use custom date scalar here
   }
 
   type User {
     id: ID!
     email: String!
-    password: String!
+    passwordHash: String!
   }
 `;
 

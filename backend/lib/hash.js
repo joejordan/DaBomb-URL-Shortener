@@ -42,4 +42,4 @@ function HashURL(url) {
   }
 }
 
-module.exports = HashURL, Base58ToString;
+module.exports = HashURL;
